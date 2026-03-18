@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiazheng Chu — Saxophonist · Maker · Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #1a1a24;
+  --accent: #c9a84c;
+  --accent2: #e8c96a;
+  --text: #d4d4d8;
+  --text-dim: #71717a;
+  --text-bright: #fafafa;
+  --blue: #5b7fa6;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 14px 0;
+}
+nav .inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 32px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+nav .logo {
+  font-family: var(--serif); font-size: 18px; font-weight: 600;
+  color: var(--text-bright); letter-spacing: 0.5px;
+}
+nav .logo span { color: var(--accent); }
+nav ul { list-style: none; display: flex; gap: 28px; }
+nav a {
+  color: var(--text-dim); text-decoration: none; font-size: 13px;
+  font-weight: 400; letter-spacing: 1px; text-transform: uppercase;
+  transition: color 0.3s;
+}
+nav a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 32px 80px;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 20% 50%, rgba(91,127,166,0.08), transparent),
+    radial-gradient(ellipse 500px 500px at 80% 30%, rgba(201,168,76,0.06), transparent);
+}
+.hero-content {
+  max-width: 800px; position: relative; z-index: 1; text-align: center;
+}
+.hero-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(42px, 7vw, 72px);
+  font-weight: 600; color: var(--text-bright);
+  line-height: 1.1; margin-bottom: 20px;
+  animation: fadeUp 0.8s ease 0.15s both;
+}
+.hero h1 em {
+  font-style: italic; color: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 17px; color: var(--text-dim); max-width: 560px;
+  margin: 0 auto 36px; line-height: 1.8;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.hero-tags span {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 1px;
+  padding: 6px 14px; border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 20px; color: var(--accent);
+  background: rgba(201,168,76,0.04);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTIONS ── */
+section { padding: 100px 32px; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600; color: var(--text-bright);
+  margin-bottom: 40px; line-height: 1.2;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 60px;
+  align-items: start;
+}
+.about-photo {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover;
+  border-radius: 4px; filter: grayscale(20%);
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.about-text p { margin-bottom: 16px; color: var(--text); }
+.about-text strong { color: var(--text-bright); font-weight: 500; }
+
+/* ── RESEARCH ── */
+#research { background: var(--bg2); }
+.research-card {
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px; padding: 40px;
+  background: rgba(201,168,76,0.02);
+  margin-bottom: 24px;
+}
+.research-card h3 {
+  font-family: var(--serif); font-size: 24px; color: var(--accent);
+  margin-bottom: 8px;
+}
+.research-card .tag {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 1px; margin-bottom: 16px; display: block;
+}
+.research-card p { color: var(--text); }
+.download-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 20px; padding: 10px 20px;
+  border: 1px solid var(--accent); border-radius: 4px;
+  color: var(--accent); text-decoration: none;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.download-btn:hover {
+  background: var(--accent); color: var(--bg);
+}
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+.project-card {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px; overflow: hidden;
+  background: var(--bg2);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.project-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-4px);
+}
+.project-video {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--bg3);
+}
+.project-video iframe {
+  width: 100%; height: 100%; border: none;
+}
+.project-info { padding: 24px; }
+.project-info h3 {
+  font-family: var(--serif); font-size: 20px;
+  color: var(--text-bright); margin-bottom: 6px;
+}
+.project-info .meta {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent); letter-spacing: 1px; margin-bottom: 10px;
+}
+.project-info p {
+  font-size: 14px; color: var(--text-dim); line-height: 1.6;
+}
+.project-tools {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+}
+.project-tools span {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.5px;
+  padding: 3px 10px; border-radius: 12px;
+  background: rgba(91,127,166,0.12); color: var(--blue);
+}
+
+/* ── MANUFACTURING ── */
+#manufacturing { background: var(--bg2); }
+.mfg-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  margin-bottom: 32px;
+}
+.mfg-img-wrap {
+  position: relative; overflow: hidden; border-radius: 4px;
+  aspect-ratio: 4/3;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.mfg-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(10%);
+  transition: transform 0.4s, filter 0.4s;
+}
+.mfg-img-wrap:hover img {
+  transform: scale(1.05); filter: grayscale(0%);
+}
+.mfg-img-wrap .caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 8px 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  font-size: 12px; color: var(--text-dim);
+}
+.mfg-text p { color: var(--text); margin-bottom: 12px; }
+
+/* ── CV ── */
+.cv-section {
+  text-align: center; padding: 80px 32px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--bg2);
+  text-align: center;
+  padding: 100px 32px;
+}
+.contact-links {
+  display: flex; justify-content: center; gap: 32px;
+  flex-wrap: wrap; margin-top: 32px;
+}
+.contact-links a {
+  color: var(--text-dim); text-decoration: none;
+  font-family: var(--mono); font-size: 13px; letter-spacing: 1px;
+  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.contact-links a:hover {
+  color: var(--accent); border-color: var(--accent);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 32px;
+  font-size: 12px; color: var(--text-dim);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav ul { gap: 16px; }
+  nav a { font-size: 11px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-photo { max-width: 200px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .mfg-grid { grid-template-columns: 1fr; }
+  section { padding: 64px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo">Jiazheng <span>Chu</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#manufacturing">Making</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Saxophonist · Instrument Maker · Researcher</div>
+    <h1>Jiazheng Chu<br><em>储加铮</em></h1>
+    <p class="hero-sub">
+      Exploring how centuries of instrument manufacturing craft knowledge
+      can inform the design of tangible interfaces for
+      quantum-computing aided musical expression.
+    </p>
+    <div class="hero-tags">
+      <span>Max/MSP</span>
+      <span>Physical Computing</span>
+      <span>Digital Fabrication</span>
+      <span>QAC</span>
+      <span>NIME</span>
+      <span>Saxophone</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <div>
+        <!-- REPLACE src with your actual hosted portrait image URL -->
+        <img class="about-photo" src="portrait.jpg" alt="Jiazheng Chu portrait">
+      </div>
+      <div class="about-text">
+        <p>
+          <strong>Interdisciplinary arts-and-technology graduate</strong> with hands-on experience in
+          instrument manufacturing, physical computing, service robot deployment, and AI-enabled media systems.
+        </p>
+        <p>
+          I grew up connected to the <strong>wind instrument manufacturing cluster in Taizhou, Jiangsu</strong> —
+          China's largest — where I spent years doing hands-on work: saxophone key mechanism assembly,
+          pad calibration, bore polishing, spring tension adjustment, and QC play-testing.
+          I also play <strong>saxophone and electric guitar</strong>, trained across eight instruments from childhood.
+        </p>
+        <p>
+          Currently developing a research direction called <strong>"Quantum Luthierie"</strong> —
+          investigating how embodied craft knowledge from traditional instrument making can be
+          translated into design heuristics for tangible QAC interfaces.
+        </p>
+        <p style="margin-top: 24px;">
+          <strong>Education</strong><br>
+          B.A. in Arts, Technology and Entertainment — Xi'an Jiaotong-Liverpool University (XJTLU), 2021–2025<br>
+          M.M.S. — Duke University (currently on gap year), 2025–present
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <div class="section-label">02 — Research</div>
+    <div class="section-title">Quantum Luthierie</div>
+
+    <div class="research-card">
+      <h3>Translating Instrument Manufacturing Knowledge into Tangible Interfaces for QAC</h3>
+      <span class="tag">Research Direction · 2025–Present</span>
+      <p>
+        Investigating how the embodied craft knowledge accumulated in wind instrument manufacturing —
+        the tacit understanding of how millimeter-level physical decisions shape playability, tonal response,
+        and the performer's learning path — can be systematically extracted and formalized as design heuristics
+        for tangible interfaces that make Quantum-computing Aided Composition (QAC) outputs physically intuitive
+        for performers. Methodology combines auto-ethnography, practice-based research-through-design,
+        physical prototyping (Arduino/ESP32, 3D printing), and progressive disclosure mechanisms grounded
+        in Dreyfus's skill acquisition model.
+      </p>
+      <!-- REPLACE href with actual hosted PDF link -->
+      <a class="download-btn" href="Quantum_Luthierie_Proposal.pdf">↓ Download Research Proposal (PDF)</a>
+    </div>
+
+    <div class="research-card">
+      <h3>Earlier: "Beyond Instant Play"</h3>
+      <span class="tag">2025</span>
+      <p>
+        Investigated sensing-informed adaptive assistance for musical skill development.
+        Core design concept: "Scaffolding Fade-out" — adaptive assistance that progressively
+        withdraws as the player develops independent musicianship. This work directly motivated
+        the Quantum Luthierie direction.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">03 — Projects</div>
+    <div class="section-title">Selected Work</div>
+
+    <div class="projects-grid">
+
+      <!-- VR Pentatonic Instrument -->
+      <div class="project-card">
+        <div class="project-video">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1mz421Z7uP&autoplay=0" allowfullscreen></iframe>
+        </div>
+        <div class="project-info">
+          <div class="meta">XJTLU 2024 · 1ST PLACE</div>
+          <h3>VR Pentatonic Body-Gesture Instrument</h3>
+          <p>Interactive VR musical instrument using Max/MSP integrated with Unity. Full-body gestures mapped to pitch, volume, and timbre via OSC protocol. Real-time parameter mapping directly relevant to tangible QAC interface design.</p>
+          <div class="project-tools">
+            <span>Max/MSP</span><span>Unity</span><span>OSC</span><span>VR</span><span>Spatial Audio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generating -->
+      <div class="project-card">
+        <div class="project-video">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1BF4m1u7ZR&autoplay=0" allowfullscreen></iframe>
+        </div>
+        <div class="project-info">
+          <div class="meta">XJTLU 2025 · SENIOR THESIS</div>
+          <h3>"Generating" — Experimental Film</h3>
+          <p>Experimental short film fusing DJI Air 3 drone cinematography with AI-generated video, rhythm-edited with original synthesizer soundtrack.</p>
+          <div class="project-tools">
+            <span>DJI Air 3</span><span>Midjourney</span><span>Kling AI</span><span>Ableton Live</span><span>Serum</span><span>DaVinci</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tree Hollow -->
+      <div class="project-card">
+        <div class="project-video">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1MwkoYEEEu&autoplay=0" allowfullscreen></iframe>
+        </div>
+        <div class="project-info">
+          <div class="meta">XJTLU 2024 · INDIVIDUAL PROJECT</div>
+          <h3>"Tree Hollow" — AI Animation</h3>
+          <p>AI-generated narrative animation combining GPT-4o visual generation with original score composed in Cubase and Omnisphere.</p>
+          <div class="project-tools">
+            <span>GPT-4o</span><span>Cubase</span><span>Omnisphere</span><span>AI Animation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sensor Interface -->
+      <div class="project-card">
+        <div class="project-video" style="display:flex;align-items:center;justify-content:center;background:var(--bg3);">
+          <div style="text-align:center;padding:32px;">
+            <div style="font-size:48px;margin-bottom:12px;">🎛️</div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--text-dim);letter-spacing:1px;">HARDWARE PROTOTYPE</div>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="meta">XJTLU 2023–2024</div>
+          <h3>Sensor-Integrated Musical Interface</h3>
+          <p>Gesture-responsive audio interface: pressure sensors and accelerometer inputs mapped to Max/MSP synthesis parameters. Form factor iterated through 3D-printed enclosures.</p>
+          <div class="project-tools">
+            <span>Arduino</span><span>Max/MSP</span><span>3D Printing</span><span>Sensors</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURING -->
+<section id="manufacturing">
+  <div class="container">
+    <div class="section-label">04 — Instrument Manufacturing</div>
+    <div class="section-title">Maker-Practitioner Background</div>
+
+    <div class="mfg-grid">
+      <div class="mfg-img-wrap">
+        <!-- REPLACE src with your actual hosted image URLs -->
+        <img src="sax_custom.jpg" alt="Custom alto saxophone with unique lacquer and engraving">
+        <div class="caption">Custom alto saxophone — unique lacquer &amp; engraving</div>
+      </div>
+      <div class="mfg-img-wrap">
+        <img src="sax_performance.jpg" alt="Saxophone solo performance">
+        <div class="caption">Saxophone solo at 20th birthday banquet</div>
+      </div>
+      <div class="mfg-img-wrap">
+        <img src="workshop.jpg" alt="Instrument repair workbench at Taizhou factory">
+        <div class="caption">Instrument repair workbench — Taizhou factory, age 15</div>
+      </div>
+    </div>
+
+    <div class="mfg-text">
+      <p>
+        <strong style="color:var(--text-bright)">Taizhou, Jiangsu</strong> is the heart of China's wind instrument
+        manufacturing cluster. I spent my secondary school years at workshops here, gaining hands-on experience in
+        saxophone key realignment and mechanism assembly, pad replacement and seating pressure calibration,
+        bore polishing, reed selection and modification, bell flare shaping, spring tension adjustment,
+        and final QC play-testing.
+      </p>
+      <p>
+        This dual background — as both maker and player — provides what Polanyi (1966) terms "tacit knowledge":
+        embodied understanding of how millimeter-level physical design decisions shape playability, tonal response,
+        and the player's learning path. It is the empirical foundation for the "Quantum Luthierie" research direction.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section class="cv-section">
+  <div class="container">
+    <div class="section-label">05 — Curriculum Vitae</div>
+    <!-- REPLACE href with actual hosted PDF link -->
+    <a class="download-btn" href="Resume_JiazhengChu.pdf">↓ Download CV (PDF)</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">06 — Contact</div>
+    <div class="section-title">Get in Touch</div>
+    <div class="contact-links">
+      <a href="mailto:jiazheng.chu@duke.edu">jiazheng.chu@duke.edu</a>
+      <a href="https://github.com/jiazhengchu">GitHub</a>
+      <a href="https://space.bilibili.com/">Bilibili</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Jiazheng Chu (储加铮) — Quantum Luthierie</p>
+</footer>
+
+</body>
+</html>
